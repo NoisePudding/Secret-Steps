@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=4 uid="uid://clq3fwv007cn1"]
+
+[ext_resource type="PackedScene" uid="uid://bpodkci1nyj21" path="res://scenes/player.tscn" id="1_gt05w"]
+[ext_resource type="PackedScene" uid="uid://b46bghv54n0yx" path="res://scripts/mouse_light.tscn" id="2_1rj64"]
+[ext_resource type="PackedScene" uid="uid://b6xrmc3trj4fk" path="res://scenes/tile_map_proto.tscn" id="3_pja13"]
+[ext_resource type="PackedScene" uid="uid://dom8mmj334rd1" path="res://scenes/tile_map_def.tscn" id="3_x83os"]
+
+[node name="tileset test" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_gt05w")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Mouse Light" parent="." instance=ExtResource("2_1rj64")]
+
+[node name="tile_map_def" parent="." instance=ExtResource("3_x83os")]
+tile_map_data = PackedByteArray("AAD6/wEAAAABAAIAAAD7/wEAAAABAAIAAAD8/wEAAAABAAIAAAD9/wEAAAABAAIAAAD+/wEAAAABAAIAAAD//wEAAAABAAIAAAAAAAEAAAABAAIAAAABAAEAAAABAAIAAAACAAEAAAABAAIAAAADAAEAAAABAAIAAAAEAAEAAAABAAIAAAAFAAEAAAABAAIAAAAGAAEAAAABAAIAAAAHAAEAAAABAAIAAAA=")
+
+[node name="tilemapph" parent="." instance=ExtResource("3_pja13")]
+
+[node name="Mouse Light2" parent="." instance=ExtResource("2_1rj64")]
+
+[node name="tilemapph2" parent="." instance=ExtResource("3_pja13")]
+position = Vector2(107, -65)

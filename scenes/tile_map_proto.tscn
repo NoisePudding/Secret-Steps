@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=4 uid="uid://b6xrmc3trj4fk"]
+
+[ext_resource type="Texture2D" uid="uid://cylcrabulrj2x" path="res://assets/test_set.png" id="1_8hy74"]
+[ext_resource type="Script" path="res://scenes/tile_map_proto.gd" id="2_sftyc"]
+[ext_resource type="Texture2D" uid="uid://bc5usgsjs2f17" path="res://assets/tileset.png" id="2_u2pmn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnp1b"]
+resource_name = "basic"
+texture = ExtResource("1_8hy74")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6bnu"]
+texture = ExtResource("2_u2pmn")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4, 0, -4, -8, -4)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4, 0, -4, -8, -4)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4, 0, -4, -8, -4)
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mll60"]
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_lnp1b")
+sources/1 = SubResource("TileSetAtlasSource_d6bnu")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1olcd"]
+size = Vector2(128, 4)
+
+[node name="tilemapph" type="TileMapLayer" node_paths=PackedStringArray("platform")]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD9/wAAAQAEAAAAAAD+/wAAAQAEAAAAAAD//wAAAQAEAAAAAAAAAAAAAQAEAAAAAAABAAAAAQAEAAAAAAACAAAAAQAEAAAAAAD8/wAAAQADAAAAAAADAAAAAQAFAAAAAAA=")
+tile_set = SubResource("TileSet_mll60")
+script = ExtResource("2_sftyc")
+platform = NodePath("Area2D/CollisionShape2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_1olcd")
+
+[connection signal="area_entered" from="Area2D" to="." method="on_light_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="on_light_exited"]

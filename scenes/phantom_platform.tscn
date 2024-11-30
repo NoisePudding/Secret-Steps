@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://mfaqvbc3l6ky"]
+
+[ext_resource type="Script" path="res://scenes/phantom_platform.gd" id="1_jlwbn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dihi"]
+size = Vector2(64, 8)
+
+[sub_resource type="QuadMesh" id="QuadMesh_han50"]
+size = Vector2(64, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wki6"]
+size = Vector2(64, 8)
+
+[node name="Phantom Platform" type="StaticBody2D" node_paths=PackedStringArray("platform", "visual")]
+collision_layer = 2
+script = ExtResource("1_jlwbn")
+platform = NodePath("CollisionShape2D")
+visual = NodePath("CollisionShape2D/MeshInstance2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_1dihi")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D"]
+mesh = SubResource("QuadMesh_han50")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_3wki6")
+
+[connection signal="area_entered" from="Area2D" to="." method="on_light_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="on_light_exited"]

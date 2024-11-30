@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b46bghv54n0yx"]
+
+[ext_resource type="Script" path="res://scenes/mouse_light.gd" id="1_tubob"]
+[ext_resource type="Texture2D" uid="uid://bsmscsk6ww77r" path="res://assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_471m3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xu51o"]
+radius = 50.0
+
+[node name="Mouse Light" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_tubob")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.190186, 0.190186)
+color = Color(0.952941, 0.223529, 0.14902, 1)
+texture = ExtResource("2_471m3")
+texture_scale = 2.0
+
+[node name="Collision Check" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision Check"]
+shape = SubResource("CircleShape2D_xu51o")

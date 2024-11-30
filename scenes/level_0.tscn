@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://mx7allj6cgjk"]
+
+[ext_resource type="PackedScene" uid="uid://bpodkci1nyj21" path="res://scenes/player.tscn" id="1_kpewo"]
+[ext_resource type="PackedScene" uid="uid://b46bghv54n0yx" path="res://scripts/mouse_light.tscn" id="2_ohuu1"]
+[ext_resource type="PackedScene" uid="uid://mfaqvbc3l6ky" path="res://scenes/phantom_platform.tscn" id="3_ugqr0"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_41af1"]
+size = Vector2(1000, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vcca"]
+size = Vector2(757, 125)
+
+[node name="Level 0" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_kpewo")]
+position = Vector2(-314, 57)
+jump_peak_time = 0.5
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(4, 98)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+scale = Vector2(0.756, 0.25)
+mesh = SubResource("QuadMesh_41af1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_8vcca")
+
+[node name="Mouse Light" parent="." instance=ExtResource("2_ohuu1")]
+position = Vector2(-213, -153)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.633757, 0.633757, 0.633757, 1)
+
+[node name="Phantom Platform" parent="." instance=ExtResource("3_ugqr0")]
+position = Vector2(285, -111)
+scale = Vector2(2, 2)
