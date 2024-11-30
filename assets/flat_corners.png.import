@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc7e1yfv8gxec"
-path="res://.godot/imported/end.png-91ae7946b56bfbd8b6d20e992293b133.ctex"
+uid="uid://cg12qoq13j8od"
+path="res://.godot/imported/flat_corners.png-759360443d61188b08fbc5a3a440de12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scripts/end.png"
-dest_files=["res://.godot/imported/end.png-91ae7946b56bfbd8b6d20e992293b133.ctex"]
+source_file="res://assets/flat_corners.png"
+dest_files=["res://.godot/imported/flat_corners.png-759360443d61188b08fbc5a3a440de12.ctex"]
 
 [params]
 
